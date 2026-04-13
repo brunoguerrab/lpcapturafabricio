@@ -513,22 +513,61 @@ const counterObs = new IntersectionObserver(entries => {
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
 
-// ===== FORM SUBMIT =====
-function handleSubmit() {
+// ===== FORM SUBMIT, ActiveCampaign =====
+const AC_ENDPOINT = 'https://brunogc18.activehosted.com/admin/api.php';
+const AC_KEY = '3247650f82e62064866b78d2baf2dafe1c952bab99e0f07a21cb582bb5ce33a4cdde0986';
+const AC_LIST_ID = '4';
+
+async function handleSubmit() {
   const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
+  const btn = document.querySelector('.btn-cta');
 
   if (!nome || !email || !whatsapp) {
     alert('Preencha todos os campos para garantir sua vaga.');
     return;
   }
 
-  // TODO: Replace with actual form endpoint (webhook, API, etc.)
-  // Example: fetch('https://your-api.com/leads', { method: 'POST', body: JSON.stringify({nome, email, whatsapp}) });
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailOk) {
+    alert('Digite um e-mail valido.');
+    return;
+  }
 
-  // Redirect to thank you page
-  window.location.href = 'obrigado.html';
+  const originalText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'ENVIANDO...';
+
+  const nomeParts = nome.split(/\s+/);
+  const firstName = nomeParts.shift();
+  const lastName = nomeParts.join(' ');
+
+  const params = new URLSearchParams();
+  params.append('api_action', 'contact_sync');
+  params.append('api_key', AC_KEY);
+  params.append('api_output', 'json');
+  params.append('email', email);
+  params.append('first_name', firstName);
+  if (lastName) params.append('last_name', lastName);
+  params.append('phone', whatsapp);
+  params.append('p[' + AC_LIST_ID + ']', AC_LIST_ID);
+  params.append('status[' + AC_LIST_ID + ']', '1');
+
+  try {
+    const resp = await fetch(AC_ENDPOINT + '?' + params.toString(), { method: 'POST' });
+    const data = await resp.json();
+    if (data.result_code === 1 || data.result_code === '1') {
+      window.location.href = 'obrigado.html';
+    } else {
+      throw new Error(data.result_message || 'Falha no cadastro');
+    }
+  } catch (err) {
+    console.error('AC submit error', err);
+    btn.disabled = false;
+    btn.innerHTML = originalText;
+    alert('Nao foi possivel enviar agora. Tenta de novo em alguns segundos.');
+  }
 }
 
 // ===== SMOOTH SCROLL =====
