@@ -64,29 +64,34 @@ export default async function handler(req, res) {
   const firstName = parts.shift();
   const lastName = parts.join(' ');
 
-  const params = new URLSearchParams();
-  params.append('api_action', 'contact_sync');
-  params.append('api_key', apiKey);
-  params.append('api_output', 'json');
-  params.append('email', email);
-  params.append('first_name', firstName);
-  if (lastName) params.append('last_name', lastName);
-  params.append('phone', whatsapp);
-  params.append('p[' + AC_LIST_ID + ']', AC_LIST_ID);
-  params.append('status[' + AC_LIST_ID + ']', '1');
-  params.append('tags', AC_TAG);
+  // Query string: so params obrigatorios (autenticacao/roteamento)
+  const qs = new URLSearchParams();
+  qs.append('api_action', 'contact_sync');
+  qs.append('api_key', apiKey);
+  qs.append('api_output', 'json');
 
-  params.append('field[' + FIELD_UTM_SOURCE + ',0]', (body.utm_source || '').toString());
-  params.append('field[' + FIELD_UTM_CAMPAIGN + ',0]', (body.utm_campaign || '').toString());
-  params.append('field[' + FIELD_UTM_MEDIUM + ',0]', (body.utm_medium || '').toString());
-  params.append('field[' + FIELD_UTM_CONTENT + ',0]', (body.utm_content || '').toString());
-  params.append('field[' + FIELD_UTM_TERM + ',0]', (body.utm_term || '').toString());
-  params.append('field[' + FIELD_DATA_CADASTRO + ',0]', isoNow());
+  // Body: dados do contato (form-urlencoded)
+  const formBody = new URLSearchParams();
+  formBody.append('email', email);
+  formBody.append('first_name', firstName);
+  if (lastName) formBody.append('last_name', lastName);
+  formBody.append('phone', whatsapp);
+  formBody.append('p[' + AC_LIST_ID + ']', AC_LIST_ID);
+  formBody.append('status[' + AC_LIST_ID + ']', '1');
+  formBody.append('tags', AC_TAG);
+
+  formBody.append('field[' + FIELD_UTM_SOURCE + ',0]', (body.utm_source || '').toString());
+  formBody.append('field[' + FIELD_UTM_CAMPAIGN + ',0]', (body.utm_campaign || '').toString());
+  formBody.append('field[' + FIELD_UTM_MEDIUM + ',0]', (body.utm_medium || '').toString());
+  formBody.append('field[' + FIELD_UTM_CONTENT + ',0]', (body.utm_content || '').toString());
+  formBody.append('field[' + FIELD_UTM_TERM + ',0]', (body.utm_term || '').toString());
+  formBody.append('field[' + FIELD_DATA_CADASTRO + ',0]', isoNow());
 
   try {
-    const acResp = await fetch(AC_BASE + '?' + params.toString(), {
+    const acResp = await fetch(AC_BASE + '?' + qs.toString(), {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formBody.toString()
     });
     const data = await acResp.json();
 
