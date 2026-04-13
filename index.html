@@ -514,8 +514,8 @@ const counterObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
 
 // ===== UTM CAPTURE & PERSIST =====
-// Roda assim que a pagina carrega. Se vier UTM na URL, salva em sessionStorage
-// pra persistir mesmo que o lead navegue pra outra secao antes de submeter.
+// Salva UTMs da URL em sessionStorage quando a LP carrega.
+// Persiste mesmo que o lead navegue antes de submeter.
 (function captureUTMs() {
   const params = new URLSearchParams(window.location.search);
   const keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
@@ -529,20 +529,9 @@ function getUTM(key) {
   return sessionStorage.getItem('tdl_' + key) || '';
 }
 
-// ===== FORM SUBMIT, ActiveCampaign =====
-const AC_ENDPOINT = 'https://brunogc18.activehosted.com/admin/api.php';
-const AC_KEY = '3247650f82e62064866b78d2baf2dafe1c952bab99e0f07a21cb582bb5ce33a4cdde0986';
-const AC_LIST_ID = '4';
-const AC_TAGS = '[TDL] Inscrito';
-
-// IDs dos custom fields no AC (lista 4, Trade da Liberdade)
-const FIELD_UTM_SOURCE = 2;
-const FIELD_UTM_CAMPAIGN = 3;
-const FIELD_UTM_MEDIUM = 4;
-const FIELD_UTM_CONTENT = 6;
-const FIELD_UTM_TERM = 7;
-const FIELD_DATA_CADASTRO = 8;
-
+// ===== FORM SUBMIT via proxy /api/lead =====
+// Chama rota do proprio dominio. Nao bloqueado por adblocker.
+// Toda logica do AC fica server-side em api/lead.js (Vercel Function).
 async function handleSubmit() {
   const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -554,8 +543,7 @@ async function handleSubmit() {
     return;
   }
 
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  if (!emailOk) {
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     alert('Digite um e-mail valido.');
     return;
   }
@@ -564,50 +552,31 @@ async function handleSubmit() {
   btn.disabled = true;
   btn.innerHTML = 'ENVIANDO...';
 
-  const nomeParts = nome.split(/\s+/);
-  const firstName = nomeParts.shift();
-  const lastName = nomeParts.join(' ');
-
-  // Data ISO 8601 com timezone local (-03:00 Brasilia)
-  const now = new Date();
-  const pad = n => String(n).padStart(2, '0');
-  const tzOffset = -now.getTimezoneOffset();
-  const tzSign = tzOffset >= 0 ? '+' : '-';
-  const tzAbs = Math.abs(tzOffset);
-  const dataCadastro = now.getFullYear() + '-' + pad(now.getMonth()+1) + '-' + pad(now.getDate())
-    + 'T' + pad(now.getHours()) + ':' + pad(now.getMinutes()) + ':' + pad(now.getSeconds())
-    + tzSign + pad(Math.floor(tzAbs/60)) + ':' + pad(tzAbs%60);
-
-  const params = new URLSearchParams();
-  params.append('api_action', 'contact_sync');
-  params.append('api_key', AC_KEY);
-  params.append('api_output', 'json');
-  params.append('email', email);
-  params.append('first_name', firstName);
-  if (lastName) params.append('last_name', lastName);
-  params.append('phone', whatsapp);
-  params.append('p[' + AC_LIST_ID + ']', AC_LIST_ID);
-  params.append('status[' + AC_LIST_ID + ']', '1');
-  params.append('tags', AC_TAGS);
-
-  // UTMs
-  params.append('field[' + FIELD_UTM_SOURCE + ',0]', getUTM('utm_source'));
-  params.append('field[' + FIELD_UTM_CAMPAIGN + ',0]', getUTM('utm_campaign'));
-  params.append('field[' + FIELD_UTM_MEDIUM + ',0]', getUTM('utm_medium'));
-  params.append('field[' + FIELD_UTM_CONTENT + ',0]', getUTM('utm_content'));
-  params.append('field[' + FIELD_UTM_TERM + ',0]', getUTM('utm_term'));
-  params.append('field[' + FIELD_DATA_CADASTRO + ',0]', dataCadastro);
+  const payload = {
+    nome,
+    email,
+    whatsapp,
+    utm_source: getUTM('utm_source'),
+    utm_medium: getUTM('utm_medium'),
+    utm_campaign: getUTM('utm_campaign'),
+    utm_content: getUTM('utm_content'),
+    utm_term: getUTM('utm_term')
+  };
 
   try {
-    const resp = await fetch(AC_ENDPOINT + '?' + params.toString(), { method: 'POST' });
+    const resp = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
     const data = await resp.json();
-    if (data.result_code === 1 || data.result_code === '1') {
+    if (data.ok) {
       window.location.href = 'obrigado.html';
     } else {
-      throw new Error(data.result_message || 'Falha no cadastro');
+      throw new Error(data.error || 'Falha no cadastro');
     }
   } catch (err) {
-    console.error('AC submit error', err);
+    console.error('Submit error', err);
     btn.disabled = false;
     btn.innerHTML = originalText;
     alert('Nao foi possivel enviar agora. Tenta de novo em alguns segundos.');
