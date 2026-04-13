@@ -544,9 +544,14 @@ function getUTM(key) {
   return sessionStorage.getItem('tdl_' + key) || '';
 }
 
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : '';
+}
+
 // ===== FORM SUBMIT via proxy /api/lead =====
 // Chama rota do proprio dominio. Nao bloqueado por adblocker.
-// Toda logica do AC fica server-side em api/lead.js (Vercel Function).
+// Toda logica do AC + Meta CAPI fica server-side em api/lead.js (Vercel Function).
 async function handleSubmit() {
   const nome = document.getElementById('nome').value.trim();
   const email = document.getElementById('email').value.trim();
@@ -567,6 +572,9 @@ async function handleSubmit() {
   btn.disabled = true;
   btn.innerHTML = 'ENVIANDO...';
 
+  // event_id unico pra dedup entre Pixel (client) e CAPI (server)
+  const eventId = 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
+
   const payload = {
     nome,
     email,
@@ -575,7 +583,13 @@ async function handleSubmit() {
     utm_medium: getUTM('utm_medium'),
     utm_campaign: getUTM('utm_campaign'),
     utm_content: getUTM('utm_content'),
-    utm_term: getUTM('utm_term')
+    utm_term: getUTM('utm_term'),
+    // Dados pra CAPI deduplicar com o Pixel
+    event_id: eventId,
+    fbc: getCookie('_fbc'),
+    fbp: getCookie('_fbp'),
+    user_agent: navigator.userAgent,
+    source_url: window.location.href
   };
 
   try {
@@ -586,11 +600,13 @@ async function handleSubmit() {
     });
     const data = await resp.json();
     if (data.ok) {
-      // Dispara evento Lead no Meta Pixel antes de redirecionar
+      // Pixel dispara com MESMO event_id do CAPI => Meta dedup automaticamente
       if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead', {
           content_name: 'Trade da Liberdade',
           content_category: 'Evento Gratuito'
+        }, {
+          eventID: eventId
         });
       }
       window.location.href = 'obrigado.html';
