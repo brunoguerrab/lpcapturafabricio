@@ -159,6 +159,29 @@ h2.headline .green{color:var(--deep)}
 .wa-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -12px rgba(37,211,102,0.75), 0 0 0 6px rgba(37,211,102,0.18)}
 .wa-cta svg{width:26px;height:26px;flex-shrink:0}
 
+/* ===== FINAL CTA ===== */
+.final-cta{
+  max-width:760px;margin:0 auto;padding:48px 32px;
+  background:linear-gradient(180deg,#030712 0%,#0B1220 100%);
+  border:1px solid rgba(0,232,123,0.25);
+  border-radius:20px;text-align:center;
+  box-shadow:0 0 0 1px rgba(0,232,123,0.08),0 30px 80px -20px rgba(0,232,123,0.18);
+  position:relative;overflow:hidden
+}
+.final-cta::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--deep),var(--volt),var(--flash));z-index:1
+}
+.final-cta h3{
+  font-size:28px;font-weight:800;line-height:1.2;letter-spacing:-0.01em;
+  text-transform:uppercase;color:var(--white);margin-bottom:28px
+}
+.final-cta h3 .green{color:var(--volt)}
+@media(max-width:720px){
+  .final-cta{padding:36px 22px}
+  .final-cta h3{font-size:20px}
+}
+
 /* ===== FOOTER ===== */
 .footer{padding:32px 24px;text-align:center;border-top:1px solid var(--border);background:var(--surface)}
 .footer .brand{font-size:12px;font-weight:700;color:var(--deep);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
@@ -252,14 +275,13 @@ h2.headline .green{color:var(--deep)}
     <!-- VIDEO YOUTUBE LIVE (LEMBRETE) -->
     <div class="video-shell">
       <div class="video-aspect">
-        <!-- ====== SUBSTITUIR PELO EMBED DA LIVE PROGRAMADA YOUTUBE ====== -->
-        <!-- Exemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
-        <div class="placeholder">
-          <div class="play"></div>
-          INSERIR EMBED YOUTUBE (LIVE PROGRAMADA)
-          <small>botão "definir lembrete" aparece no player</small>
-        </div>
-        <!-- ============================================================== -->
+        <iframe
+          src="https://www.youtube.com/embed/kaUKJgo24MY?rel=0&modestbranding=1"
+          title="Trade da Liberdade · Ao Vivo com Fabrício Gonçalvez"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -276,12 +298,27 @@ h2.headline .green{color:var(--deep)}
       Se você ainda <b>não entrou no grupo oficial</b> do evento, entre pois o link da aula ao vivo será enviado somente lá dentro. Não se preocupe, ele é <b>silencioso</b>.
     </p>
 
-    <a href="https://chat.whatsapp.com/SUBSTITUIR_LINK_GRUPO" target="_blank" rel="noopener" class="wa-cta" onclick="fbq('trackCustom','AulaWarmup_WhatsAppClick')">
+    <a href="https://devzapp.com.br/api-engennier/campanha/api/redirect/v2/69dc4ef04d0ef100015364bb" target="_blank" rel="noopener" class="wa-cta" onclick="fbq('trackCustom','AulaWarmup_WhatsAppClick')">
       <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
         <path d="M16.004 2.667C8.634 2.667 2.667 8.634 2.667 16c0 2.36.619 4.65 1.793 6.666L2.667 29.333l6.84-1.784A13.273 13.273 0 0 0 16.004 29.333c7.37 0 13.337-5.967 13.337-13.333S23.374 2.667 16.004 2.667zm0 24.445a11.1 11.1 0 0 1-5.66-1.548l-.405-.24-4.06 1.06 1.083-3.955-.265-.42a11.083 11.083 0 0 1-1.7-5.909c0-6.131 4.98-11.111 11.111-11.111 6.131 0 11.111 4.98 11.111 11.111s-4.98 11.012-11.215 11.012zm6.09-8.305c-.334-.167-1.974-.975-2.28-1.088-.306-.112-.528-.167-.751.168-.222.334-.862 1.088-1.057 1.311-.195.222-.39.25-.724.084-.334-.167-1.409-.52-2.684-1.656-.992-.884-1.66-1.976-1.855-2.31-.195-.334-.02-.515.146-.682.15-.149.334-.39.501-.585.167-.195.222-.334.334-.557.112-.222.056-.417-.028-.585-.084-.167-.751-1.811-1.029-2.479-.271-.652-.547-.563-.751-.573l-.64-.011c-.223 0-.585.084-.891.417-.306.334-1.168 1.141-1.168 2.784 0 1.644 1.196 3.232 1.363 3.455.167.222 2.355 3.596 5.705 5.041.798.344 1.421.55 1.907.704.801.255 1.53.219 2.106.133.643-.096 1.974-.807 2.253-1.586.279-.78.279-1.448.195-1.586-.084-.139-.306-.222-.64-.39z"/>
       </svg>
       Entrar no grupo
     </a>
+  </section>
+
+  <div class="glow-line"></div>
+
+  <!-- BLOCO 4: CTA FINAL DE REFORÇO -->
+  <section class="reveal">
+    <div class="final-cta">
+      <h3>Não entrou no grupo <span class="green">do WhatsApp</span> ainda? <span class="green">Entre agora</span></h3>
+      <a href="https://devzapp.com.br/api-engennier/campanha/api/redirect/v2/69dc4ef04d0ef100015364bb" target="_blank" rel="noopener" class="wa-cta" onclick="fbq('trackCustom','AulaWarmup_WhatsAppClick_Final')">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+          <path d="M16.004 2.667C8.634 2.667 2.667 8.634 2.667 16c0 2.36.619 4.65 1.793 6.666L2.667 29.333l6.84-1.784A13.273 13.273 0 0 0 16.004 29.333c7.37 0 13.337-5.967 13.337-13.333S23.374 2.667 16.004 2.667zm0 24.445a11.1 11.1 0 0 1-5.66-1.548l-.405-.24-4.06 1.06 1.083-3.955-.265-.42a11.083 11.083 0 0 1-1.7-5.909c0-6.131 4.98-11.111 11.111-11.111 6.131 0 11.111 4.98 11.111 11.111s-4.98 11.012-11.215 11.012zm6.09-8.305c-.334-.167-1.974-.975-2.28-1.088-.306-.112-.528-.167-.751.168-.222.334-.862 1.088-1.057 1.311-.195.222-.39.25-.724.084-.334-.167-1.409-.52-2.684-1.656-.992-.884-1.66-1.976-1.855-2.31-.195-.334-.02-.515.146-.682.15-.149.334-.39.501-.585.167-.195.222-.334.334-.557.112-.222.056-.417-.028-.585-.084-.167-.751-1.811-1.029-2.479-.271-.652-.547-.563-.751-.573l-.64-.011c-.223 0-.585.084-.891.417-.306.334-1.168 1.141-1.168 2.784 0 1.644 1.196 3.232 1.363 3.455.167.222 2.355 3.596 5.705 5.041.798.344 1.421.55 1.907.704.801.255 1.53.219 2.106.133.643-.096 1.974-.807 2.253-1.586.279-.78.279-1.448.195-1.586-.084-.139-.306-.222-.64-.39z"/>
+        </svg>
+        Entrar no grupo agora
+      </a>
+    </div>
   </section>
 
 </main>
