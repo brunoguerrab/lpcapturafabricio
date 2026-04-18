@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula Gratuita — Trade da Liberdade</title>
+<meta name="description" content="Aula gratuita exclusiva: como se tornar um trader consistente e alcançar sua liberdade em tempo recorde. Com Fabrício Gonçalvez.">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- VTurb Preload (carregamento rápido do player) -->
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="preload" href="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e2884a53605249be055be8/v4/player.js" as="script">
+<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+<link rel="preload" href="https://cdn.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/69e287cea40cbebddf77b1ba/main.m3u8" as="fetch">
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1626605555284143');
+fbq('track', 'PageView');
+fbq('trackCustom', 'AulaWarmup_View');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1626605555284143&ev=PageView&noscript=1"
+/></noscript>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --midnight:#030712;--ink:#0B1220;--steel:#1F2937;
+  --soft:#5A6473;--border:#E5E9EE;--surface:#F6F8FA;--white:#FFFFFF;
+  --volt:#00E87B;--flash:#00FF8A;--deep:#059669
+}
+html,body{background:var(--white)}
+body{
+  font-family:'Sora',system-ui,sans-serif;
+  color:var(--midnight);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  background:var(--white);
+  background-image:
+    radial-gradient(ellipse at 20% 0%,rgba(0,232,123,0.10) 0%,transparent 55%),
+    radial-gradient(ellipse at 80% 100%,rgba(0,232,123,0.06) 0%,transparent 55%);
+}
+::selection{background:rgba(0,232,123,0.35);color:var(--midnight)}
+
+/* ===== MARQUEE TOP ===== */
+.marquee-wrap{overflow:hidden;padding:12px 0;background:var(--volt)}
+.marquee-inner{display:flex;gap:48px;animation:marquee 22s linear infinite;white-space:nowrap}
+.marquee-item{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--midnight);display:flex;align-items:center;gap:16px}
+.marquee-diamond{width:5px;height:5px;background:var(--midnight);transform:rotate(45deg)}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ===== MAIN ===== */
+main{flex:1;width:100%;max-width:920px;margin:0 auto;padding:64px 24px 80px}
+
+/* ===== BRAND BAR ===== */
+.brand-bar{display:inline-flex;align-items:center;gap:14px;background:var(--volt);color:var(--midnight);padding:14px 28px;border-radius:8px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;font-size:32px;line-height:1;box-shadow:0 0 40px rgba(0,232,123,0.25)}
+.brand-bar .pulse{width:10px;height:10px;background:var(--midnight);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.35}}
+.brand-row{display:flex;justify-content:center;margin-bottom:56px}
+
+/* ===== SECTIONS ===== */
+.block{text-align:center;margin-bottom:64px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(0,232,123,0.10);border:1px solid rgba(0,232,123,0.35);border-radius:100px;padding:8px 20px;font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--deep);margin-bottom:20px}
+.eyebrow .dot{width:6px;height:6px;background:var(--volt);border-radius:50%;box-shadow:0 0 10px rgba(0,232,123,0.8)}
+
+h2.headline{
+  font-size:34px;font-weight:800;line-height:1.15;letter-spacing:-0.02em;
+  text-transform:uppercase;color:var(--midnight);
+  max-width:760px;margin:0 auto
+}
+h2.headline .green{color:var(--deep)}
+.subhead{
+  font-size:22px;line-height:1.55;color:var(--ink);
+  max-width:760px;margin:24px auto 0;font-weight:500
+}
+.subhead b{color:var(--midnight);font-weight:700}
+.subhead .mark{
+  position:relative;display:inline-block;
+  padding:2px 8px;color:var(--midnight);font-weight:800;
+  background:linear-gradient(180deg,transparent 55%,rgba(0,232,123,0.55) 55%,rgba(0,232,123,0.55) 92%,transparent 92%);
+  white-space:nowrap
+}
+.subhead .strong{color:var(--midnight);font-weight:800}
+
+/* ===== VIDEO FRAME ===== */
+.video-shell{
+  position:relative;
+  max-width:820px;margin:36px auto 0;
+  border-radius:18px;overflow:hidden;
+  background:var(--ink);
+  border:1px solid var(--border);
+  box-shadow:0 0 0 1px rgba(0,232,123,0.08),0 30px 80px -20px rgba(0,232,123,0.25);
+}
+.video-shell::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--deep),var(--volt),var(--flash));z-index:3}
+.video-aspect{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+.video-aspect iframe,
+.video-aspect > div{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* VTurb player: respeita o aspect próprio do video */
+.video-vturb{position:relative;width:100%;background:#000;line-height:0}
+.video-vturb vturb-smartplayer{display:block;width:100%;margin:0 auto}
+
+/* placeholder visual quando ainda nao tem embed */
+.placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#0b1220 0%,#030712 100%);
+  color:rgba(255,255,255,0.45);font-size:13px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600
+}
+.placeholder .play{
+  width:88px;height:88px;border-radius:50%;
+  background:rgba(0,232,123,0.12);border:2px solid rgba(0,232,123,0.5);
+  display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  position:relative
+}
+.placeholder .play::after{
+  content:'';width:0;height:0;
+  border-left:22px solid var(--volt);
+  border-top:14px solid transparent;border-bottom:14px solid transparent;
+  margin-left:6px
+}
+.placeholder small{margin-top:8px;color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:0.2em}
+
+/* ===== DIVIDER ===== */
+.glow-line{width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--deep),transparent);opacity:0.4;margin:80px auto}
+
+/* ===== CTA HINT (logo abaixo do video) ===== */
+.cta-hint{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-top:24px;font-size:13px;font-weight:600;
+  color:var(--soft);letter-spacing:0.04em;text-transform:uppercase
+}
+.cta-hint .arrow{color:var(--deep)}
+
+/* ===== WHATSAPP CTA ===== */
+.wa-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  margin-top:36px;padding:20px 40px;
+  background:#25D366;color:#FFFFFF;
+  font-family:'Sora',system-ui,sans-serif;
+  font-size:18px;font-weight:700;letter-spacing:0.01em;
+  text-decoration:none;border-radius:100px;
+  box-shadow:0 16px 40px -12px rgba(37,211,102,0.6), 0 0 0 4px rgba(37,211,102,0.12);
+  transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease
+}
+.wa-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -12px rgba(37,211,102,0.75), 0 0 0 6px rgba(37,211,102,0.18)}
+.wa-cta svg{width:26px;height:26px;flex-shrink:0}
+
+/* ===== FOOTER ===== */
+.footer{padding:32px 24px;text-align:center;border-top:1px solid var(--border);background:var(--surface)}
+.footer .brand{font-size:12px;font-weight:700;color:var(--deep);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px}
+.footer p{font-size:11px;color:var(--soft);line-height:1.7;max-width:760px;margin:0 auto}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:720px){
+  main{padding:40px 18px 60px}
+  .brand-bar{font-size:22px;padding:12px 22px}
+  h2.headline{font-size:24px}
+  .subhead{font-size:15px}
+  .glow-line{margin:56px auto}
+  .placeholder .play{width:64px;height:64px}
+  .placeholder .play::after{border-left:16px solid var(--volt);border-top:10px solid transparent;border-bottom:10px solid transparent}
+  .wa-cta{font-size:16px;padding:18px 30px;gap:12px}
+  .wa-cta svg{width:22px;height:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee-inner">
+    <span class="marquee-item">Trade da Liberdade <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Aula Gratuita <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Com Fabrício Gonçalvez <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Sua Liberdade Começa Aqui <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Trade da Liberdade <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Aula Gratuita <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Com Fabrício Gonçalvez <span class="marquee-diamond"></span></span>
+    <span class="marquee-item">Sua Liberdade Começa Aqui <span class="marquee-diamond"></span></span>
+  </div>
+</div>
+
+<main>
+
+  <!-- BRAND BAR -->
+  <div class="brand-row reveal">
+    <div class="brand-bar">
+      <span class="pulse"></span>
+      Trade da Liberdade
+    </div>
+  </div>
+
+  <!-- BLOCO 1: AULA PRESENTE -->
+  <section class="block reveal">
+    <div class="eyebrow"><span class="dot"></span> Aula Exclusiva e Gratuita</div>
+    <h2 class="headline">
+      Assiste a aula que eu fiz <span class="green">de presente pra você</span>
+    </h2>
+    <p class="subhead">
+      Nessa aula curta e exclusiva, eu vou te entregar <span class="strong">o caminho mais curto</span> pra você virar um trader consistente, parar de devolver dinheiro pro mercado e finalmente conquistar a sua <span class="mark">liberdade financeira</span>.
+    </p>
+
+    <!-- VIDEO VTURB -->
+    <div class="video-shell">
+      <div class="video-vturb">
+        <vturb-smartplayer id="vid-69e2884a53605249be055be8" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        <script type="text/javascript">
+          var s=document.createElement("script");
+          s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e2884a53605249be055be8/v4/player.js";
+          s.async=!0;
+          document.head.appendChild(s);
+        </script>
+      </div>
+    </div>
+
+    <div class="cta-hint">
+      <span>Assiste com atenção até o final</span>
+      <span class="arrow">↓</span>
+    </div>
+  </section>
+
+  <div class="glow-line"></div>
+
+  <!-- BLOCO 2: ATIVAR LEMBRETE -->
+  <section class="block reveal">
+    <div class="eyebrow"><span class="dot"></span> Próximo Passo</div>
+    <h2 class="headline">
+      Ative o lembrete <span class="green">para não perder a aula ao vivo</span>
+    </h2>
+    <p class="subhead">
+      Clique em <b>"Definir lembrete"</b> no vídeo abaixo para ser notificado quando eu entrar ao vivo.
+    </p>
+
+    <!-- VIDEO YOUTUBE LIVE (LEMBRETE) -->
+    <div class="video-shell">
+      <div class="video-aspect">
+        <!-- ====== SUBSTITUIR PELO EMBED DA LIVE PROGRAMADA YOUTUBE ====== -->
+        <!-- Exemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe> -->
+        <div class="placeholder">
+          <div class="play"></div>
+          INSERIR EMBED YOUTUBE (LIVE PROGRAMADA)
+          <small>botão "definir lembrete" aparece no player</small>
+        </div>
+        <!-- ============================================================== -->
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-line"></div>
+
+  <!-- BLOCO 3: GRUPO WHATSAPP -->
+  <section class="block reveal">
+    <div class="eyebrow"><span class="dot"></span> Atenção</div>
+    <h2 class="headline">
+      <span class="green">Importante</span>
+    </h2>
+    <p class="subhead">
+      Se você ainda <b>não entrou no grupo oficial</b> do evento, entre pois o link da aula ao vivo será enviado somente lá dentro. Não se preocupe, ele é <b>silencioso</b>.
+    </p>
+
+    <a href="https://chat.whatsapp.com/SUBSTITUIR_LINK_GRUPO" target="_blank" rel="noopener" class="wa-cta" onclick="fbq('trackCustom','AulaWarmup_WhatsAppClick')">
+      <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+        <path d="M16.004 2.667C8.634 2.667 2.667 8.634 2.667 16c0 2.36.619 4.65 1.793 6.666L2.667 29.333l6.84-1.784A13.273 13.273 0 0 0 16.004 29.333c7.37 0 13.337-5.967 13.337-13.333S23.374 2.667 16.004 2.667zm0 24.445a11.1 11.1 0 0 1-5.66-1.548l-.405-.24-4.06 1.06 1.083-3.955-.265-.42a11.083 11.083 0 0 1-1.7-5.909c0-6.131 4.98-11.111 11.111-11.111 6.131 0 11.111 4.98 11.111 11.111s-4.98 11.012-11.215 11.012zm6.09-8.305c-.334-.167-1.974-.975-2.28-1.088-.306-.112-.528-.167-.751.168-.222.334-.862 1.088-1.057 1.311-.195.222-.39.25-.724.084-.334-.167-1.409-.52-2.684-1.656-.992-.884-1.66-1.976-1.855-2.31-.195-.334-.02-.515.146-.682.15-.149.334-.39.501-.585.167-.195.222-.334.334-.557.112-.222.056-.417-.028-.585-.084-.167-.751-1.811-1.029-2.479-.271-.652-.547-.563-.751-.573l-.64-.011c-.223 0-.585.084-.891.417-.306.334-1.168 1.141-1.168 2.784 0 1.644 1.196 3.232 1.363 3.455.167.222 2.355 3.596 5.705 5.041.798.344 1.421.55 1.907.704.801.255 1.53.219 2.106.133.643-.096 1.974-.807 2.253-1.586.279-.78.279-1.448.195-1.586-.084-.139-.306-.222-.64-.39z"/>
+      </svg>
+      Entrar no grupo
+    </a>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="brand">Trade da Liberdade</div>
+  <p>© 2026 Fabrício Gonçalvez. Todos os direitos reservados. Resultados passados não garantem resultados futuros. Operações no mercado financeiro envolvem risco. Estude antes de investir.</p>
+</footer>
+
+<script>
+// reveal on scroll
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
