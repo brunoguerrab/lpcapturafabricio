@@ -159,6 +159,37 @@ h2.headline .green{color:var(--deep)}
 .wa-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -12px rgba(37,211,102,0.75), 0 0 0 6px rgba(37,211,102,0.18)}
 .wa-cta svg{width:26px;height:26px;flex-shrink:0}
 
+/* ===== LEMBRETE CTA (YouTube) ===== */
+.bell-cta{
+  display:inline-flex;align-items:center;gap:14px;
+  margin-top:28px;padding:20px 44px;
+  background:linear-gradient(180deg,#FF0033 0%,#CC0022 100%);
+  color:#FFFFFF;
+  font-family:'Sora',system-ui,sans-serif;
+  font-size:18px;font-weight:800;letter-spacing:0.02em;
+  text-transform:uppercase;
+  text-decoration:none;border-radius:100px;
+  box-shadow:0 16px 40px -12px rgba(255,0,51,0.55), 0 0 0 4px rgba(255,0,51,0.12);
+  transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease
+}
+.bell-cta:hover{transform:translateY(-2px);box-shadow:0 24px 56px -12px rgba(255,0,51,0.7), 0 0 0 6px rgba(255,0,51,0.18)}
+.bell-cta svg{width:24px;height:24px;flex-shrink:0;animation:bellshake 2.4s ease-in-out infinite}
+@keyframes bellshake{
+  0%,90%,100%{transform:rotate(0deg)}
+  92%{transform:rotate(-14deg)}
+  94%{transform:rotate(12deg)}
+  96%{transform:rotate(-8deg)}
+  98%{transform:rotate(6deg)}
+}
+.bell-hint{
+  display:block;margin-top:14px;font-size:12px;font-weight:600;
+  color:var(--soft);letter-spacing:0.04em;text-transform:uppercase
+}
+@media(max-width:720px){
+  .bell-cta{font-size:15px;padding:18px 32px;gap:10px}
+  .bell-cta svg{width:20px;height:20px}
+}
+
 /* ===== FINAL CTA ===== */
 .final-cta{
   max-width:760px;margin:0 auto;padding:48px 32px;
@@ -284,6 +315,14 @@ h2.headline .green{color:var(--deep)}
           loading="lazy"></iframe>
       </div>
     </div>
+
+    <a href="https://www.youtube.com/watch?v=kaUKJgo24MY" target="_blank" rel="noopener" class="bell-cta" onclick="fbq('trackCustom','AulaWarmup_RemindMeClick')">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2a1.5 1.5 0 0 0-1.5 1.5V4.2C7.8 4.87 6 7.27 6 10v4l-1.7 2.3A1 1 0 0 0 5.1 18h13.8a1 1 0 0 0 .8-1.7L18 14v-4c0-2.73-1.8-5.13-4.5-5.8V3.5A1.5 1.5 0 0 0 12 2zm0 19a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 21z"/>
+      </svg>
+      Ativar lembrete no YouTube
+    </a>
+    <span class="bell-hint">Vai abrir o YouTube · clica no sininho e tá feito</span>
   </section>
 
   <div class="glow-line"></div>
