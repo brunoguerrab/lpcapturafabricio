@@ -403,35 +403,54 @@ section.tight{padding:80px 0}
 .bonus-header .label{margin-bottom:14px}
 .bonus-header h3{font-size:28px;font-weight:700;color:var(--white);letter-spacing:-0.01em;line-height:1.2;margin-bottom:10px}
 .bonus-header p{font-size:15px;color:var(--silver)}
-.bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px}
-.bonus-card{
-  position:relative;background:var(--steel);border-radius:16px;padding:26px 24px 22px;
-  display:flex;flex-direction:column;
-  border:1px solid var(--border);overflow:hidden;
+.bonus-list{display:flex;flex-direction:column;gap:14px;margin-bottom:44px}
+.bonus-row{
+  position:relative;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;
+  background:var(--steel);border:1px solid var(--border);border-radius:18px;
+  padding:26px 30px;overflow:hidden;
   transition:transform .3s, border-color .3s;
 }
-.bonus-card:hover{transform:translateY(-3px)}
-.bonus-card.tier-gold{border-color:rgba(212,168,67,0.4);background:linear-gradient(180deg,rgba(212,168,67,0.08),transparent 60%),var(--steel)}
-.bonus-card.tier-cta{border-color:rgba(0,232,123,0.36);background:linear-gradient(180deg,rgba(0,232,123,0.07),transparent 60%),var(--steel)}
-.bonus-card.tier-live{border-color:rgba(255,46,46,0.34);background:linear-gradient(180deg,rgba(255,46,46,0.06),transparent 60%),var(--steel)}
-.bonus-tier{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;align-self:flex-start}
-.tier-gold .bonus-tier{background:rgba(212,168,67,0.14);color:var(--gold)}
-.tier-cta .bonus-tier{background:rgba(0,232,123,0.14);color:var(--cta)}
-.tier-live .bonus-tier{background:rgba(255,46,46,0.14);color:var(--live)}
-.bonus-tier .dot-s{width:6px;height:6px;border-radius:50%;background:currentColor}
-.bonus-items{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
-.bonus-item{border-top:1px solid var(--border);padding-top:14px}
-.bonus-item:first-child{border-top:none;padding-top:0}
-.bonus-item .bi-k{font-size:15px;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.25}
-.bonus-item .bi-desc{font-size:12.5px;color:var(--silver);line-height:1.55;margin-bottom:7px}
-.bonus-item .bi-val{font-family:var(--mono);font-size:12.5px;color:var(--cta);font-weight:600;letter-spacing:0.04em}
-.bonus-warn{margin-top:auto;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);display:flex;align-items:center;gap:8px;padding-top:14px;border-top:1px dashed var(--border)}
-.bonus-warn svg{width:13px;height:13px;flex-shrink:0}
-.tier-gold .bonus-warn svg{color:var(--gold)}
-.tier-cta .bonus-warn svg{color:var(--cta)}
-.tier-live .bonus-warn svg{color:var(--live)}
-.tier-live .bonus-warn{animation:pulse 2.2s ease-in-out infinite}
-@media (max-width:960px){.bonus-grid{grid-template-columns:1fr}}
+.bonus-row:hover{transform:translateY(-2px)}
+.bonus-row.tier-gold{border-color:rgba(212,168,67,0.4);background:linear-gradient(90deg,rgba(212,168,67,0.09),transparent 55%),var(--steel)}
+.bonus-row.tier-cta{border-color:rgba(0,232,123,0.36);background:linear-gradient(90deg,rgba(0,232,123,0.07),transparent 55%),var(--steel)}
+.bonus-row.tier-live{border-color:rgba(255,46,46,0.36);background:linear-gradient(90deg,rgba(255,46,46,0.07),transparent 55%),var(--steel)}
+.bonus-row.tier-live{animation:pulse 2.4s ease-in-out infinite}
+
+.bonus-gift{width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.tier-gold .bonus-gift{background:rgba(212,168,67,0.14);color:var(--gold);box-shadow:0 0 0 1px rgba(212,168,67,0.22) inset}
+.tier-cta .bonus-gift{background:rgba(0,232,123,0.14);color:var(--cta);box-shadow:0 0 0 1px rgba(0,232,123,0.22) inset}
+.tier-live .bonus-gift{background:rgba(255,46,46,0.14);color:var(--live);box-shadow:0 0 0 1px rgba(255,46,46,0.22) inset}
+.bonus-gift svg{width:38px;height:38px}
+
+.bonus-body{min-width:0}
+.bonus-body .tier-pill{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px}
+.tier-gold .bonus-body .tier-pill{background:rgba(212,168,67,0.14);color:var(--gold)}
+.tier-cta .bonus-body .tier-pill{background:rgba(0,232,123,0.14);color:var(--cta)}
+.tier-live .bonus-body .tier-pill{background:rgba(255,46,46,0.14);color:var(--live)}
+.tier-pill .dot-s{width:6px;height:6px;border-radius:50%;background:currentColor}
+.bonus-body h4{font-size:20px;font-weight:700;color:var(--white);line-height:1.22;letter-spacing:-0.01em;margin-bottom:6px}
+.bonus-body p{font-size:15px;color:var(--frost);line-height:1.6}
+.bonus-body p strong{color:var(--white);font-weight:600}
+
+.bonus-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0;text-align:right}
+.bonus-val-label{font-size:10px;color:var(--silver);letter-spacing:0.22em;text-transform:uppercase}
+.bonus-val{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--white);letter-spacing:-0.01em;white-space:nowrap;line-height:1}
+.bonus-warn-line{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;display:inline-flex;align-items:center;gap:6px;margin-top:4px;white-space:nowrap}
+.tier-gold .bonus-warn-line{color:var(--gold)}
+.tier-cta .bonus-warn-line{color:var(--cta)}
+.tier-live .bonus-warn-line{color:var(--live)}
+.bonus-warn-line svg{width:12px;height:12px}
+
+@media (max-width:820px){
+  .bonus-row{grid-template-columns:auto 1fr;gap:16px;padding:22px}
+  .bonus-gift{width:60px;height:60px}
+  .bonus-gift svg{width:30px;height:30px}
+  .bonus-body h4{font-size:17px}
+  .bonus-body p{font-size:14px}
+  .bonus-right{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;width:100%;text-align:left;border-top:1px dashed var(--border);padding-top:14px;margin-top:2px}
+  .bonus-warn-line{margin-top:0}
+  .bonus-val{font-size:22px}
+}
 
 /* VALOR TOTAL + STACK */
 .stack-header{text-align:center;margin:8px auto 22px;max-width:620px}
@@ -909,7 +928,7 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
         </div>
 
         <div class="timer-box">
-          <div class="lbl">Inscrições encerram em</div>
+          <div class="lbl">Promoção válida até 00h00</div>
           <div class="timer-grid">
             <div class="timer-block"><div class="n" id="hH">00</div><div class="u">Horas</div></div>
             <div class="timer-block"><div class="n" id="hM">00</div><div class="u">Minutos</div></div>
@@ -920,60 +939,76 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
         <!-- BÔNUS -->
         <div class="bonus-header">
           <div class="label">Bônus exclusivos</div>
-          <h3>Quanto mais rápido você agir, mais você leva.</h3>
-          <p>Três camadas de bônus ativas agora. Quando acabarem, acabaram.</p>
+          <h3>Você entra na sala e leva tudo isso junto.</h3>
+          <p>4 bônus exclusivos somando <strong style="color:var(--cta)">R$ 10.111,82</strong> em valor agregado. Entrou agora, levou tudo.</p>
         </div>
 
-        <div class="bonus-grid">
-          <div class="bonus-card tier-gold">
-            <span class="bonus-tier"><span class="dot-s"></span>Os 10 primeiros</span>
-            <div class="bonus-items">
-              <div class="bonus-item">
-                <div class="bi-k">Ingresso presencial · Vivendo de Bolsa</div>
-                <div class="bi-desc">Evento presencial exclusivo com a elite do day trade brasileiro. Networking com traders profissionais, workshops práticos e conteúdo que não sai da sala.</div>
-                <div class="bi-val">Valor: R$ 1.000</div>
-              </div>
-              <div class="bonus-item">
-                <div class="bi-k">Acesso à Confraria</div>
-                <div class="bi-desc">Grupo fechado de traders avançados que eu pessoalmente mentoro. Networking de altíssimo nível, operações compartilhadas e acesso direto a mim fora da sala.</div>
-                <div class="bi-val">Valor: R$ 4.000</div>
-              </div>
+        <div class="bonus-list">
+
+          <div class="bonus-row tier-gold">
+            <div class="bonus-gift">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
             </div>
-            <div class="bonus-warn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              Só os 10 primeiros · quando acabar, acabou
+            <div class="bonus-body">
+              <span class="tier-pill"><span class="dot-s"></span>BÔNUS 01 · OS 10 PRIMEIROS</span>
+              <h4>Ingresso presencial · Vivendo de Bolsa</h4>
+              <p>Evento presencial exclusivo com a elite do day trade brasileiro. Networking com traders profissionais, workshops práticos e conteúdo que <strong>não sai da sala</strong>.</p>
+            </div>
+            <div class="bonus-right">
+              <span class="bonus-val-label">Valor</span>
+              <span class="bonus-val">R$ 1.000</span>
+              <span class="bonus-warn-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Só os 10 primeiros</span>
             </div>
           </div>
 
-          <div class="bonus-card tier-cta">
-            <span class="bonus-tier"><span class="dot-s"></span>Os 50 primeiros</span>
-            <div class="bonus-items">
-              <div class="bonus-item">
-                <div class="bi-k">+3 Meses de Sala ao Vivo</div>
-                <div class="bi-desc">Os 50 primeiros não ficam só com 3 meses. Ficam com <strong style="color:var(--white)">6 meses inteiros</strong> na sala. Dobro de tempo operando do meu lado, dobro de tempo com minha tela aberta, dobro de tempo sendo acompanhado na sua evolução.</div>
-                <div class="bi-val">Valor: R$ 2.997</div>
-              </div>
+          <div class="bonus-row tier-gold">
+            <div class="bonus-gift">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
             </div>
-            <div class="bonus-warn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              Só os 50 primeiros · depois volta pros 3 meses
+            <div class="bonus-body">
+              <span class="tier-pill"><span class="dot-s"></span>BÔNUS 02 · OS 10 PRIMEIROS</span>
+              <h4>Acesso vitalício à Confraria</h4>
+              <p>Grupo fechado de traders avançados que eu pessoalmente mentoro. Networking de altíssimo nível, operações compartilhadas e <strong>acesso direto a mim</strong> fora da sala.</p>
+            </div>
+            <div class="bonus-right">
+              <span class="bonus-val-label">Valor</span>
+              <span class="bonus-val">R$ 4.000</span>
+              <span class="bonus-warn-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Só os 10 primeiros</span>
             </div>
           </div>
 
-          <div class="bonus-card tier-live">
-            <span class="bonus-tier"><span class="dot-s"></span>Até hoje · 23:59</span>
-            <div class="bonus-items">
-              <div class="bonus-item">
-                <div class="bi-k">Quants Robôs · Acesso trimestral</div>
-                <div class="bi-desc">Meu sistema de robôs operacionais de alta performance. O mesmo que eu uso no meu operacional diário como complemento estratégico.</div>
-                <div class="bi-val">Valor: R$ 2.114,82</div>
-              </div>
+          <div class="bonus-row tier-cta">
+            <div class="bonus-gift">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
             </div>
-            <div class="bonus-warn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              Só até hoje à meia-noite · amanhã some
+            <div class="bonus-body">
+              <span class="tier-pill"><span class="dot-s"></span>BÔNUS 03 · OS 50 PRIMEIROS</span>
+              <h4>+3 meses extras de Sala ao Vivo</h4>
+              <p>Os 50 primeiros não ficam só com 3 meses. Ficam com <strong>6 meses inteiros</strong> na sala. Dobro de tempo operando do meu lado, dobro de tempo com minha tela aberta, dobro de tempo sendo acompanhado na sua evolução.</p>
+            </div>
+            <div class="bonus-right">
+              <span class="bonus-val-label">Valor</span>
+              <span class="bonus-val">R$ 2.997</span>
+              <span class="bonus-warn-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Só os 50 primeiros</span>
             </div>
           </div>
+
+          <div class="bonus-row tier-live">
+            <div class="bonus-gift">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <div class="bonus-body">
+              <span class="tier-pill"><span class="dot-s"></span>BÔNUS 04 · ATÉ 23:59 DE HOJE</span>
+              <h4>Quants Robôs · Acesso trimestral</h4>
+              <p>Meu sistema de robôs operacionais de alta performance. <strong>O mesmo que eu uso</strong> no meu operacional diário como complemento estratégico. Amanhã some.</p>
+            </div>
+            <div class="bonus-right">
+              <span class="bonus-val-label">Valor</span>
+              <span class="bonus-val">R$ 2.114,82</span>
+              <span class="bonus-warn-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Só até meia-noite</span>
+            </div>
+          </div>
+
         </div>
 
         <!-- VALOR TOTAL -->
