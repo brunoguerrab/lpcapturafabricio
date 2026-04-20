@@ -175,8 +175,8 @@ section.tight{padding:80px 0}
 
 /* Hero visual: foto do Fabrício com frame live */
 .hero-visual{position:relative;aspect-ratio:4/5;max-height:620px;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy);border:1px solid var(--border)}
-.hero-visual .photo{position:absolute;inset:0;background-image:url('fabricio.jpg');background-size:cover;background-position:center top}
-.hero-visual .photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,18,0) 40%,rgba(3,7,18,0.92) 100%)}
+.hero-visual .photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.hero-visual .photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,18,0) 40%,rgba(3,7,18,0.92) 100%);pointer-events:none}
 .hero-visual .top-chip{position:absolute;top:20px;left:20px;display:inline-flex;align-items:center;gap:10px;padding:8px 14px;background:rgba(3,7,18,0.72);backdrop-filter:blur(10px);border:1px solid rgba(255,46,46,0.35);border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#fff}
 .hero-visual .top-chip .dot-s{width:7px;height:7px;border-radius:50%;background:var(--live);animation:pulse 1.4s ease-out infinite;box-shadow:0 0 10px var(--live)}
 .hero-visual .bottom-chip{position:absolute;top:20px;right:20px;padding:8px 14px;background:rgba(3,7,18,0.72);backdrop-filter:blur(10px);border:1px solid var(--border-mid);border-radius:999px;font-family:var(--mono);font-size:12px;color:var(--frost);letter-spacing:1px}
@@ -273,8 +273,8 @@ section.tight{padding:80px 0}
 /* ============== SOBRE ============== */
 .about-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
 .about-photo{position:relative;aspect-ratio:3/4;border-radius:var(--radius-lg);overflow:hidden;background:var(--navy);border:1px solid var(--border)}
-.about-photo .ph{position:absolute;inset:0;background-image:url('fabricio.jpg');background-size:cover;background-position:center top}
-.about-photo .ph::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,18,0) 55%,rgba(3,7,18,0.9) 100%)}
+.about-photo .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+.about-photo .ph-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,7,18,0) 55%,rgba(3,7,18,0.9) 100%);pointer-events:none}
 .about-photo .chip{position:absolute;top:20px;left:20px;display:inline-flex;align-items:center;gap:8px;padding:7px 12px;background:rgba(3,7,18,0.72);backdrop-filter:blur(8px);border:1px solid rgba(255,46,46,0.3);border-radius:999px;font-size:10px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#fff;z-index:2}
 .about-photo .chip .dot-s{width:6px;height:6px;border-radius:50%;background:var(--live);animation:pulse 1.4s ease-out infinite}
 .about-photo .cap{position:absolute;left:20px;right:20px;bottom:20px;color:#fff;z-index:2}
@@ -515,7 +515,8 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
       </div>
 
       <div class="hero-visual" data-reveal>
-        <div class="photo"></div>
+        <img class="photo" src="fabricio.jpg" alt="Fabrício Gonçalvez">
+        <div class="photo-overlay"></div>
         <div class="top-chip"><span class="dot-s"></span>Ao vivo</div>
         <div class="bottom-chip" id="clock">09:32 BRT</div>
         <div class="caption-box">
@@ -556,7 +557,7 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
     <div class="pain-grid">
       <div class="pain-card" data-reveal>
         <div class="pain-num">01</div>
-        <h3>Estudou teoria de mais gente do que consegue aplicar</h3>
+        <h3>Estudou muito a teoria, mas na hora de aplicar, não consegue</h3>
         <p>Curso, livro, vídeo do YouTube. Cada um fala uma coisa. Você junta tudo e não sobra um sistema. Sobra confusão.</p>
       </div>
       <div class="pain-card" data-reveal>
@@ -679,7 +680,8 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
   <div class="container">
     <div class="about-wrap">
       <div class="about-photo" data-reveal>
-        <div class="ph"></div>
+        <img class="ph" src="fabricio.jpg" alt="Fabrício Gonçalvez">
+        <div class="ph-overlay"></div>
         <div class="chip"><span class="dot-s"></span>Ao vivo · B3</div>
         <div class="cap">
           <div class="nm">Fabrício Gonçalvez</div>
