@@ -13,6 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+<link rel="dns-prefetch" href="https://cdn.converteai.net">
+<link rel="dns-prefetch" href="https://scripts.converteai.net">
+<link rel="dns-prefetch" href="https://images.converteai.net">
+<link rel="dns-prefetch" href="https://api.vturb.com.br">
 <style>
 /* ============== RESET + TOKENS ============== */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -296,20 +301,42 @@ section.tight{padding:80px 0}
   .about-photo{max-width:440px}
 }
 
-/* ============== DEPOIMENTOS (VTurb) ============== */
+/* ============== DEPOIMENTOS (VTurb Carousel) ============== */
 .testi-head{text-align:center;max-width:720px;margin:0 auto 56px}
 .testi-head .h1{margin-bottom:18px}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.testi-card{
-  background:var(--steel);border:1px solid var(--border);border-radius:var(--radius);
-  overflow:hidden;position:relative;aspect-ratio:9/16;
+.testi-carousel{position:relative;max-width:1200px;margin:0 auto}
+.testi-track{
+  display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding:4px 2px 20px 2px;scrollbar-width:none;-ms-overflow-style:none;
 }
-.vturb-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--navy),var(--midnight));color:var(--silver);font-size:12px;letter-spacing:0.2em;text-transform:uppercase;text-align:center;padding:20px}
-.vturb-slot .play{width:68px;height:68px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.35);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:border-color .3s, transform .3s}
-.testi-card:hover .vturb-slot .play{border-color:var(--white);transform:scale(1.04)}
-.vturb-slot .play svg{width:20px;height:20px;margin-left:3px}
-.vturb-slot .lbl{display:block;margin-top:4px}
-@media (max-width:960px){.testi-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}}
+.testi-track::-webkit-scrollbar{display:none}
+.testi-card{
+  flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start;
+  background:var(--steel);border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;position:relative;aspect-ratio:9/16;min-width:0;
+}
+.testi-card vturb-smartplayer{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;display:block;background:#000}
+.testi-card vturb-smartplayer > *{width:100%!important;height:100%!important}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:52px;height:52px;border-radius:50%;border:1px solid var(--border-mid);
+  background:rgba(17,24,39,0.88);backdrop-filter:blur(8px);color:var(--white);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:background .25s, border-color .25s, transform .25s;
+}
+.carousel-btn:hover{background:var(--cta);border-color:var(--cta);color:var(--midnight);transform:translateY(-50%) scale(1.06)}
+.carousel-btn svg{width:22px;height:22px}
+.carousel-prev{left:-22px}
+.carousel-next{right:-22px}
+.carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.18);border:0;cursor:pointer;transition:background .25s, width .25s}
+.carousel-dot.on{background:var(--cta);width:22px;border-radius:4px}
+@media (max-width:960px){
+  .testi-card{flex:0 0 82%}
+  .carousel-prev{left:4px}
+  .carousel-next{right:4px}
+  .carousel-btn{width:44px;height:44px}
+}
 
 /* ============== RESULTADOS ============== */
 .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
@@ -489,7 +516,7 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
           Você entra, assiste eu operar, pergunta, entende. E aprende fazendo.
         </p>
         <div class="cta-row">
-          <a href="#oferta" class="btn-primary btn-xl">Garantir minha vaga <span class="arrow">→</span></a>
+          <a href="https://app.4st.com.br/checkout/E1ZmhUJ5yL" target="_blank" rel="noopener" class="btn-primary btn-xl">Garantir minha vaga <span class="arrow">→</span></a>
           <a href="#solucao" class="btn-secondary">Ver como funciona</a>
         </div>
         <div class="trust-row">
@@ -723,28 +750,31 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
       <h2 class="h1">Histórias reais. Contas reais. Sem roteiro.</h2>
       <p class="body-lg" style="margin-top:16px">Alunos que trocaram a teoria pelo pregão ao lado do Fabrício.</p>
     </div>
-    <div class="testi-grid">
-      <div class="testi-card" data-reveal>
-        <!-- VTURB SLOT 1: substituir por script da VTurb -->
-        <div class="vturb-slot" data-vturb="1">
-          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 22,12 6,20"/></svg></div>
-          <span class="lbl">Depoimento 01</span>
+    <div class="testi-carousel" data-reveal>
+      <button class="carousel-btn carousel-prev" type="button" aria-label="Depoimento anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="testi-track" id="testiTrack">
+        <div class="testi-card">
+          <vturb-smartplayer id="vid-69e6a178d9a2e678cbc9b0e0" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        </div>
+        <div class="testi-card">
+          <vturb-smartplayer id="vid-69e6a1746ef5029c0c500c5d" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        </div>
+        <div class="testi-card">
+          <vturb-smartplayer id="vid-69e6a16eaf7645fdd1dda6b3" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        </div>
+        <div class="testi-card">
+          <vturb-smartplayer id="vid-69e6a1693a084e4af126ae7e" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
+        </div>
+        <div class="testi-card">
+          <vturb-smartplayer id="vid-69e6a15b3a084e4af126ae0b" style="display:block;margin:0 auto;width:100%;"></vturb-smartplayer>
         </div>
       </div>
-      <div class="testi-card" data-reveal>
-        <!-- VTURB SLOT 2: substituir por script da VTurb -->
-        <div class="vturb-slot" data-vturb="2">
-          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 22,12 6,20"/></svg></div>
-          <span class="lbl">Depoimento 02</span>
-        </div>
-      </div>
-      <div class="testi-card" data-reveal>
-        <!-- VTURB SLOT 3: substituir por script da VTurb -->
-        <div class="vturb-slot" data-vturb="3">
-          <div class="play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6,4 22,12 6,20"/></svg></div>
-          <span class="lbl">Depoimento 03</span>
-        </div>
-      </div>
+      <button class="carousel-btn carousel-next" type="button" aria-label="Próximo depoimento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="carousel-dots" id="testiDots"></div>
     </div>
   </div>
 </section>
@@ -816,7 +846,7 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
         </div>
 
         <div class="offer-cta">
-          <a href="#CHECKOUT_URL" class="btn-primary btn-xl">Garantir minha vaga agora <span class="arrow">→</span></a>
+          <a href="https://app.4st.com.br/checkout/E1ZmhUJ5yL" target="_blank" rel="noopener" class="btn-primary btn-xl">Garantir minha vaga agora <span class="arrow">→</span></a>
         </div>
 
         <div class="offer-foot">
@@ -898,7 +928,7 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
         <em>Com você dentro, ou sem.</em>
       </div>
       <p>Não é discurso. É escolha. Você pode continuar operando sozinho e apostando, ou pode entrar na sala de um dos 5 melhores do Brasil e aprender fazendo, todo dia útil do pregão, durante 3 meses.</p>
-      <a href="#CHECKOUT_URL" class="btn-primary btn-xl">Quero estar dentro <span class="arrow">→</span></a>
+      <a href="https://app.4st.com.br/checkout/E1ZmhUJ5yL" target="_blank" rel="noopener" class="btn-primary btn-xl">Quero estar dentro <span class="arrow">→</span></a>
       <div class="payoff">Você está <span class="hl">a um trade</span> da liberdade.</div>
     </div>
   </div>
@@ -979,6 +1009,43 @@ if('IntersectionObserver' in window){
 }else{
   document.documentElement.classList.add('no-reveal');
 }
+
+/* Carrossel de depoimentos */
+(function(){
+  const car=document.querySelector('.testi-carousel');
+  if(!car) return;
+  const track=car.querySelector('.testi-track');
+  const cards=track.querySelectorAll('.testi-card');
+  const prev=car.querySelector('.carousel-prev');
+  const next=car.querySelector('.carousel-next');
+  const dotsWrap=car.querySelector('.carousel-dots');
+  cards.forEach((_,i)=>{
+    const b=document.createElement('button');
+    b.className='carousel-dot'+(i===0?' on':'');
+    b.type='button';
+    b.setAttribute('aria-label','Ir para depoimento '+(i+1));
+    b.addEventListener('click',()=>{
+      const w=cards[0].getBoundingClientRect().width+22;
+      track.scrollTo({left:w*i,behavior:'smooth'});
+    });
+    dotsWrap.appendChild(b);
+  });
+  const dots=dotsWrap.querySelectorAll('.carousel-dot');
+  const step=()=>cards[0].getBoundingClientRect().width+22;
+  prev.addEventListener('click',()=>track.scrollBy({left:-step(),behavior:'smooth'}));
+  next.addEventListener('click',()=>track.scrollBy({left:step(),behavior:'smooth'}));
+  track.addEventListener('scroll',()=>{
+    const idx=Math.round(track.scrollLeft/step());
+    dots.forEach((d,i)=>d.classList.toggle('on',i===idx));
+  },{passive:true});
+})();
 </script>
+
+<!-- VTurb Players (depoimentos) -->
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e6a178d9a2e678cbc9b0e0/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e6a1746ef5029c0c500c5d/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e6a16eaf7645fdd1dda6b3/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e6a1693a084e4af126ae7e/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/6ea10fb8-30ed-4ffb-9352-18c1f40b89e5/players/69e6a15b3a084e4af126ae0b/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 </body>
 </html>
