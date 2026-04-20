@@ -398,25 +398,86 @@ section.tight{padding:80px 0}
 .timer-block .n{font-family:var(--mono);font-size:30px;font-weight:500;color:var(--white);letter-spacing:-0.02em;line-height:1}
 .timer-block .u{font-size:10px;color:var(--silver);letter-spacing:0.2em;text-transform:uppercase;margin-top:8px}
 
-.price-block{text-align:center;margin:36px 0 32px;padding:28px 20px;background:var(--midnight);border:1px solid var(--border);border-radius:14px}
-.price-from{font-size:13px;color:var(--silver);margin-bottom:8px}
-.price-from del{color:rgba(210,214,225,0.4)}
-.price-big{font-family:var(--mono);font-size:52px;font-weight:500;color:var(--white);letter-spacing:-0.02em;line-height:1}
-.price-big small{font-size:22px;font-weight:400;color:var(--silver);margin-right:4px}
-.price-or{font-size:14px;color:var(--silver);margin-top:12px}
-.price-or strong{color:var(--white);font-weight:600}
+/* BÔNUS */
+.bonus-header{text-align:center;margin:16px auto 28px;max-width:700px}
+.bonus-header .label{margin-bottom:14px}
+.bonus-header h3{font-size:28px;font-weight:700;color:var(--white);letter-spacing:-0.01em;line-height:1.2;margin-bottom:10px}
+.bonus-header p{font-size:15px;color:var(--silver)}
+.bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:44px}
+.bonus-card{
+  position:relative;background:var(--steel);border-radius:16px;padding:26px 24px 22px;
+  display:flex;flex-direction:column;
+  border:1px solid var(--border);overflow:hidden;
+  transition:transform .3s, border-color .3s;
+}
+.bonus-card:hover{transform:translateY(-3px)}
+.bonus-card.tier-gold{border-color:rgba(212,168,67,0.4);background:linear-gradient(180deg,rgba(212,168,67,0.08),transparent 60%),var(--steel)}
+.bonus-card.tier-cta{border-color:rgba(0,232,123,0.36);background:linear-gradient(180deg,rgba(0,232,123,0.07),transparent 60%),var(--steel)}
+.bonus-card.tier-live{border-color:rgba(255,46,46,0.34);background:linear-gradient(180deg,rgba(255,46,46,0.06),transparent 60%),var(--steel)}
+.bonus-tier{display:inline-flex;align-items:center;gap:8px;padding:5px 11px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:16px;align-self:flex-start}
+.tier-gold .bonus-tier{background:rgba(212,168,67,0.14);color:var(--gold)}
+.tier-cta .bonus-tier{background:rgba(0,232,123,0.14);color:var(--cta)}
+.tier-live .bonus-tier{background:rgba(255,46,46,0.14);color:var(--live)}
+.bonus-tier .dot-s{width:6px;height:6px;border-radius:50%;background:currentColor}
+.bonus-items{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
+.bonus-item{border-top:1px solid var(--border);padding-top:14px}
+.bonus-item:first-child{border-top:none;padding-top:0}
+.bonus-item .bi-k{font-size:15px;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.25}
+.bonus-item .bi-desc{font-size:12.5px;color:var(--silver);line-height:1.55;margin-bottom:7px}
+.bonus-item .bi-val{font-family:var(--mono);font-size:12.5px;color:var(--cta);font-weight:600;letter-spacing:0.04em}
+.bonus-warn{margin-top:auto;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver);display:flex;align-items:center;gap:8px;padding-top:14px;border-top:1px dashed var(--border)}
+.bonus-warn svg{width:13px;height:13px;flex-shrink:0}
+.tier-gold .bonus-warn svg{color:var(--gold)}
+.tier-cta .bonus-warn svg{color:var(--cta)}
+.tier-live .bonus-warn svg{color:var(--live)}
+.tier-live .bonus-warn{animation:pulse 2.2s ease-in-out infinite}
+@media (max-width:960px){.bonus-grid{grid-template-columns:1fr}}
 
-.offer-cta{display:flex;justify-content:center}
-.offer-cta .btn-primary{width:100%;max-width:460px}
+/* VALOR TOTAL + STACK */
+.stack-header{text-align:center;margin:8px auto 22px;max-width:620px}
+.stack-header .label{margin-bottom:10px}
+.stack-header h3{font-size:22px;font-weight:700;color:var(--white);letter-spacing:-0.01em}
+.value-card{
+  position:relative;background:var(--midnight);border:1px solid var(--border-mid);
+  border-radius:20px;padding:36px 40px;margin-bottom:28px;
+}
+.value-table{border-top:1px solid var(--border)}
+.value-row{display:flex;justify-content:space-between;align-items:center;padding:15px 4px;border-bottom:1px solid var(--border);gap:20px}
+.value-row .r-k{font-size:14.5px;color:var(--frost);line-height:1.45;flex:1}
+.value-row .r-k small{display:block;font-size:10px;color:var(--silver);letter-spacing:0.18em;text-transform:uppercase;margin-top:4px;font-weight:600}
+.value-row .r-k small.gold{color:var(--gold)}
+.value-row .r-k small.cta{color:var(--cta)}
+.value-row .r-k small.live{color:var(--live)}
+.value-row .r-v{font-family:var(--mono);font-size:15px;color:var(--white);font-weight:500;white-space:nowrap}
+.value-row.total{border-bottom:none;padding-top:22px;margin-top:6px;border-top:1px solid var(--border-mid)}
+.value-row.total .r-k{font-size:13px;font-weight:700;color:var(--white);letter-spacing:0.22em;text-transform:uppercase}
+.value-row.total .r-v{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--silver);text-decoration:line-through;text-decoration-color:rgba(255,46,46,0.6);text-decoration-thickness:2px}
+
+.price-final{text-align:center;padding:40px 24px;background:linear-gradient(180deg,rgba(0,232,123,0.05),transparent 60%),var(--steel);border:1px solid rgba(0,232,123,0.22);border-radius:20px;position:relative;overflow:hidden}
+.price-final::before{content:'';position:absolute;top:-40%;left:50%;transform:translateX(-50%);width:140%;height:120%;background:radial-gradient(ellipse at center top,rgba(0,232,123,0.18),transparent 60%);pointer-events:none}
+.price-final .from{position:relative;font-size:13px;color:var(--silver);margin-bottom:6px;letter-spacing:0.1em}
+.price-final .from del{color:rgba(210,214,225,0.45);margin-right:4px}
+.price-final .por{position:relative;font-size:11px;color:var(--cta);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:8px;font-weight:700}
+.price-final .pv{position:relative;font-family:var(--mono);font-size:clamp(60px,9vw,96px);font-weight:700;color:var(--white);letter-spacing:-0.03em;line-height:1}
+.price-final .pv small{font-size:.36em;font-weight:500;color:var(--silver);margin-right:4px}
+.price-final .split{position:relative;font-size:15px;color:var(--silver);margin-top:12px}
+.price-final .split strong{color:var(--white);font-weight:600}
+
+.offer-cta{display:flex;justify-content:center;margin-top:28px}
+.offer-cta .btn-primary{width:100%;max-width:560px}
+.offer-cta .btn-primary .flame{margin-right:8px}
 
 .offer-foot{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:26px;font-size:12px;color:var(--silver);letter-spacing:0.05em}
 .offer-foot span{display:inline-flex;align-items:center;gap:7px}
-.offer-foot svg{width:14px;height:14px;color:var(--profit)}
+.offer-foot svg{width:14px;height:14px;color:var(--cta)}
 
 @media (max-width:720px){
-  .offer-card{padding:40px 24px}
+  .offer-card{padding:40px 22px}
   .timer-block .n{font-size:26px}
-  .price-big{font-size:42px}
+  .value-card{padding:26px 22px}
+  .value-row{flex-wrap:wrap;gap:6px}
+  .value-row .r-k{flex:1 1 60%}
+  .value-row .r-v{font-size:13.5px}
 }
 
 /* ============== GARANTIA ============== */
@@ -856,14 +917,113 @@ html.no-reveal [data-reveal]{opacity:1;transform:none}
           </div>
         </div>
 
-        <div class="price-block">
-          <div class="price-from">De <del>R$ 4.997</del> por</div>
-          <div class="price-big">R$ 1.997<small>,00</small></div>
-          <div class="price-or">à vista ou <strong>12x R$ 197,90</strong></div>
+        <!-- BÔNUS -->
+        <div class="bonus-header">
+          <div class="label">Bônus exclusivos</div>
+          <h3>Quanto mais rápido você agir, mais você leva.</h3>
+          <p>Três camadas de bônus ativas agora. Quando acabarem, acabaram.</p>
+        </div>
+
+        <div class="bonus-grid">
+          <div class="bonus-card tier-gold">
+            <span class="bonus-tier"><span class="dot-s"></span>Os 10 primeiros</span>
+            <div class="bonus-items">
+              <div class="bonus-item">
+                <div class="bi-k">Ingresso presencial · Vivendo de Bolsa</div>
+                <div class="bi-desc">Evento presencial exclusivo com a elite do day trade brasileiro. Networking com traders profissionais, workshops práticos e conteúdo que não sai da sala.</div>
+                <div class="bi-val">Valor: R$ 1.000</div>
+              </div>
+              <div class="bonus-item">
+                <div class="bi-k">Acesso à Confraria</div>
+                <div class="bi-desc">Grupo fechado de traders avançados que eu pessoalmente mentoro. Networking de altíssimo nível, operações compartilhadas e acesso direto a mim fora da sala.</div>
+                <div class="bi-val">Valor: R$ 4.000</div>
+              </div>
+            </div>
+            <div class="bonus-warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Só os 10 primeiros · quando acabar, acabou
+            </div>
+          </div>
+
+          <div class="bonus-card tier-cta">
+            <span class="bonus-tier"><span class="dot-s"></span>Os 50 primeiros</span>
+            <div class="bonus-items">
+              <div class="bonus-item">
+                <div class="bi-k">+3 Meses de Sala ao Vivo</div>
+                <div class="bi-desc">Os 50 primeiros não ficam só com 3 meses. Ficam com <strong style="color:var(--white)">6 meses inteiros</strong> na sala. Dobro de tempo operando do meu lado, dobro de tempo com minha tela aberta, dobro de tempo sendo acompanhado na sua evolução.</div>
+                <div class="bi-val">Valor: R$ 2.997</div>
+              </div>
+            </div>
+            <div class="bonus-warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Só os 50 primeiros · depois volta pros 3 meses
+            </div>
+          </div>
+
+          <div class="bonus-card tier-live">
+            <span class="bonus-tier"><span class="dot-s"></span>Até hoje · 23:59</span>
+            <div class="bonus-items">
+              <div class="bonus-item">
+                <div class="bi-k">Quants Robôs · Acesso trimestral</div>
+                <div class="bi-desc">Meu sistema de robôs operacionais de alta performance. O mesmo que eu uso no meu operacional diário como complemento estratégico.</div>
+                <div class="bi-val">Valor: R$ 2.114,82</div>
+              </div>
+            </div>
+            <div class="bonus-warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Só até hoje à meia-noite · amanhã some
+            </div>
+          </div>
+        </div>
+
+        <!-- VALOR TOTAL -->
+        <div class="stack-header">
+          <div class="label">Valor total do pacote</div>
+          <h3>Somando tudo que você leva na sala.</h3>
+        </div>
+
+        <div class="value-card">
+          <div class="value-table">
+            <div class="value-row">
+              <div class="r-k">Sala ao Vivo · 3 meses</div>
+              <div class="r-v">R$ 6.000</div>
+            </div>
+            <div class="value-row">
+              <div class="r-k">Comunidade VIP</div>
+              <div class="r-v">R$ 3.000</div>
+            </div>
+            <div class="value-row">
+              <div class="r-k">Ingresso presencial · Vivendo de Bolsa<small class="gold">10 primeiros</small></div>
+              <div class="r-v">R$ 1.000</div>
+            </div>
+            <div class="value-row">
+              <div class="r-k">Acesso à Confraria<small class="gold">10 primeiros</small></div>
+              <div class="r-v">R$ 4.000</div>
+            </div>
+            <div class="value-row">
+              <div class="r-k">+3 meses de sala (total 6)<small class="cta">50 primeiros</small></div>
+              <div class="r-v">R$ 2.997</div>
+            </div>
+            <div class="value-row">
+              <div class="r-k">Quants Robôs · trimestral<small class="live">Até 23:59 do dia 20/04</small></div>
+              <div class="r-v">R$ 2.114,82</div>
+            </div>
+            <div class="value-row total">
+              <div class="r-k">Valor total</div>
+              <div class="r-v">R$ 19.111,82</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price-final">
+          <div class="from">De <del>R$ 19.111,82</del></div>
+          <div class="por">Por apenas</div>
+          <div class="pv"><small>R$</small>1.997</div>
+          <div class="split">à vista ou <strong>12x R$ 197,90</strong></div>
         </div>
 
         <div class="offer-cta">
-          <a href="https://app.4st.com.br/checkout/E1ZmhUJ5yL" target="_blank" rel="noopener" class="btn-primary btn-xl">Garantir minha vaga agora <span class="arrow">→</span></a>
+          <a href="https://app.4st.com.br/checkout/E1ZmhUJ5yL" target="_blank" rel="noopener" class="btn-primary btn-xl"><span class="flame">🔥</span>Garantir minha vaga com todos os bônus <span class="arrow">→</span></a>
         </div>
 
         <div class="offer-foot">
