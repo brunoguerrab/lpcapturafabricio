@@ -35,6 +35,32 @@ fbq('trackCustom', 'AulaWarmup_View');
 src="https://www.facebook.com/tr?id=1626605555284143&ev=PageView&noscript=1"
 /></noscript>
 
+<!-- AC Tag: Clicou Presente (se veio via email com ?email=) -->
+<script>
+(function () {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var email = (params.get('email') || '').trim().toLowerCase();
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+
+    // Evita duplicar tag em múltiplos reloads no mesmo dispositivo
+    var cacheKey = 'tdl_tag_presente_' + email;
+    if (localStorage.getItem(cacheKey)) return;
+
+    fetch('/api/tag', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, tag: '[TDL] Clicou Presente' })
+    })
+      .then(function (r) { return r.json().catch(function(){ return {}; }); })
+      .then(function (d) {
+        if (d && d.ok) localStorage.setItem(cacheKey, '1');
+      })
+      .catch(function () {});
+  } catch (e) {}
+})();
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{

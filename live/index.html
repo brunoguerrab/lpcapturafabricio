@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrando na Super Aula — Trade da Liberdade</title>
+<meta name="description" content="Acesso à Super Aula do Trade da Liberdade com Fabrício Gonçalvez.">
+<meta name="robots" content="noindex,nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1626605555284143');
+fbq('track', 'PageView');
+fbq('trackCustom', 'LiveAttendance');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1626605555284143&ev=PageView&noscript=1"/></noscript>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --midnight:#030712;--ink:#0B1220;--steel:#1F2937;
+  --soft:#5A6473;--border:#E5E9EE;--surface:#F6F8FA;--white:#FFFFFF;
+  --volt:#00E87B;--flash:#00FF8A;--deep:#059669
+}
+html,body{background:var(--midnight);height:100%}
+body{
+  font-family:'Sora',system-ui,sans-serif;
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+}
+.wrap{
+  max-width:540px;width:100%;
+  text-align:center;
+}
+.badge{
+  display:inline-block;
+  background:rgba(0,232,123,.1);
+  color:var(--volt);
+  font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;
+  padding:8px 16px;border-radius:999px;
+  border:1px solid rgba(0,232,123,.3);
+  margin-bottom:24px;
+}
+h1{
+  font-size:clamp(26px,4vw,36px);
+  font-weight:800;line-height:1.2;
+  margin-bottom:16px;
+  letter-spacing:-.02em;
+}
+h1 .hl{color:var(--volt)}
+p{
+  color:rgba(255,255,255,.7);
+  font-size:16px;line-height:1.6;
+  margin-bottom:32px;
+}
+.spinner{
+  width:44px;height:44px;
+  border:3px solid rgba(0,232,123,.15);
+  border-top-color:var(--volt);
+  border-radius:50%;
+  margin:0 auto 20px;
+  animation:spin .9s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{
+  font-size:13px;color:var(--soft);
+  font-weight:500;letter-spacing:.5px;
+  margin-top:12px;
+}
+.manual{
+  margin-top:36px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:13px;color:var(--soft);
+}
+.manual a{
+  color:var(--volt);text-decoration:none;font-weight:600;
+}
+.manual a:hover{text-decoration:underline}
+.logo{
+  font-size:12px;font-weight:700;letter-spacing:4px;
+  color:var(--volt);margin-bottom:40px;
+  text-transform:uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="logo">TRADE DA LIBERDADE</div>
+  <div class="badge">● AO VIVO EM BREVE</div>
+
+  <h1>Te levando pra <span class="hl">sala da Super Aula</span>…</h1>
+  <p>Tô liberando seu acesso. Em segundos você tá dentro.</p>
+
+  <div class="spinner"></div>
+  <div class="status" id="status">Confirmando sua entrada…</div>
+
+  <div class="manual">
+    Se não redirecionar em 3 segundos:<br>
+    <a id="manual-link" href="#" rel="noopener">Clique aqui pra entrar na Super Aula →</a>
+  </div>
+</div>
+
+<script>
+(function () {
+  // ========= CONFIGURAÇÃO =========
+  // URL do YouTube Live (atualizar quando estiver disponível)
+  // Aceita também: https://youtu.be/XXXX ou https://www.youtube.com/watch?v=XXXX
+  var YOUTUBE_LIVE_URL = 'https://www.youtube.com/@fabriciogoncalvez/live';
+  var TAG_NAME = '[TDL] Assistiu Live';
+  var REDIRECT_DELAY_MS = 2500;
+
+  // ========= EXECUÇÃO =========
+  var params = new URLSearchParams(window.location.search);
+  var email = (params.get('email') || '').trim().toLowerCase();
+  var statusEl = document.getElementById('status');
+  var manualLink = document.getElementById('manual-link');
+  manualLink.href = YOUTUBE_LIVE_URL;
+
+  function setStatus(msg) { statusEl.textContent = msg; }
+
+  function redirect() {
+    window.location.replace(YOUTUBE_LIVE_URL);
+  }
+
+  // Tagueia no AC se tem email (veio do link do email do AC: /live?email=%EMAIL%)
+  if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    setStatus('Registrando sua presença…');
+    fetch('/api/tag', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: email, tag: TAG_NAME })
+    })
+      .then(function (r) { return r.json().catch(function(){ return {}; }); })
+      .then(function (d) {
+        if (d && d.ok) {
+          setStatus('Presença confirmada. Abrindo a sala…');
+        } else {
+          setStatus('Abrindo a sala…');
+        }
+      })
+      .catch(function () { setStatus('Abrindo a sala…'); })
+      .finally(function () { setTimeout(redirect, REDIRECT_DELAY_MS); });
+  } else {
+    // Sem email (acesso direto): só redireciona
+    setStatus('Abrindo a sala…');
+    setTimeout(redirect, REDIRECT_DELAY_MS);
+  }
+})();
+</script>
+
+</body>
+</html>
