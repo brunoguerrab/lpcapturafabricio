@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="theme-color" content="#030712">
+<meta name="description" content="A oferta mais louca que já fiz. Somente pelas próximas horas. Assista o vídeo antes que saia do ar.">
+<meta property="og:title" content="Condição especial · Sala ao Vivo · Fabrício Gonçalvez">
+<meta property="og:description" content="A oferta mais louca que já fiz. Somente pelas próximas horas.">
+<meta property="og:type" content="website">
+<title>Condição especial · Sala ao Vivo · Fabrício Gonçalvez</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1626605555284143');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1626605555284143&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --midnight:#030712;
+  --midnight-2:#020509;
+  --steel:#0B1220;
+  --border:rgba(255,255,255,0.1);
+  --white:#FFFFFF;
+  --silver:#D2D6E1;
+  --dim:rgba(210,214,225,0.55);
+  --cta:#00E87B;
+  --cta-glow:rgba(0,232,123,0.45);
+  --live:#FF2E2E;
+  --gold:#D4A843;
+  --sora:'Sora', system-ui, sans-serif;
+  --mono:'JetBrains Mono', monospace;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--midnight);color:#EAEEF9;font-family:var(--sora);overflow-x:hidden}
+html{scroll-behavior:smooth}
+
+body{
+  position:relative;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse 1400px 900px at 50% 0%, rgba(0,232,123,0.08), transparent 60%),
+    radial-gradient(ellipse 1200px 700px at 10% 100%, rgba(31,41,55,0.6), transparent 70%),
+    radial-gradient(ellipse 1200px 700px at 90% 100%, rgba(255,46,46,0.06), transparent 70%),
+    linear-gradient(180deg, var(--midnight) 0%, var(--midnight-2) 100%);
+}
+
+body::before{
+  content:'';
+  position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 85%);
+  pointer-events:none;
+  z-index:0;
+}
+
+::selection{background:rgba(255,46,46,0.35);color:#fff}
+
+/* ===== TOPBAR URGÊNCIA ===== */
+.topbar{
+  position:relative;
+  z-index:5;
+  background:linear-gradient(90deg, rgba(255,46,46,0.9) 0%, rgba(255,46,46,1) 50%, rgba(255,46,46,0.9) 100%);
+  border-bottom:1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 0 24px rgba(255,46,46,0.35);
+  padding:12px 20px;
+  text-align:center;
+  overflow:hidden;
+}
+.topbar::before{
+  content:'';
+  position:absolute;
+  top:0; left:-100%;
+  width:200%; height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  animation:shine 5s linear infinite;
+}
+@keyframes shine{
+  0%{transform:translateX(0);}
+  100%{transform:translateX(50%);}
+}
+.topbar-text{
+  position:relative;
+  display:inline-flex; align-items:center; gap:14px;
+  color:#fff;
+  font-family:var(--sora);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+}
+.topbar-dot{
+  width:10px; height:10px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 0 10px rgba(255,255,255,0.8);
+  animation:blink 1.2s ease-in-out infinite;
+}
+@keyframes blink{
+  0%,100%{opacity:1; transform:scale(1);}
+  50%{opacity:0.4; transform:scale(1.4);}
+}
+
+/* ===== NAV / LOCKUP ===== */
+.nav{
+  position:relative; z-index:5;
+  padding:28px 24px 8px;
+  display:flex; justify-content:center; align-items:center;
+}
+.lockup{
+  display:flex; align-items:center; gap:14px;
+  text-decoration:none;
+}
+.logo-dot{
+  width:12px; height:12px;
+  border-radius:50%;
+  background:var(--cta);
+  box-shadow:0 0 12px var(--cta-glow);
+}
+.brand-name{
+  font-family:var(--sora);
+  font-size:14px; font-weight:700;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:#fff;
+}
+.brand-sub{
+  font-family:var(--mono);
+  font-size:12px; font-weight:500;
+  letter-spacing:0.18em; text-transform:uppercase;
+  color:var(--dim);
+  margin-left:14px; padding-left:14px;
+  border-left:1px solid rgba(255,255,255,0.15);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main{
+  position:relative;
+  z-index:2;
+  max-width:1040px;
+  margin:0 auto;
+  padding:48px 24px 80px;
+  text-align:center;
+}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:12px;
+  padding:10px 22px;
+  background:rgba(255,46,46,0.1);
+  border:1px solid rgba(255,46,46,0.45);
+  border-radius:100px;
+  font-family:var(--mono);
+  font-size:12px; font-weight:700;
+  letter-spacing:0.3em; text-transform:uppercase;
+  color:var(--live);
+  margin-bottom:32px;
+  box-shadow: 0 0 24px rgba(255,46,46,0.18);
+}
+.eyebrow .dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--live);
+  box-shadow:0 0 10px var(--live);
+  animation:blink 1.4s ease-in-out infinite;
+}
+
+.h1{
+  font-family:var(--sora);
+  font-size:clamp(32px, 4.8vw, 56px);
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:-0.025em;
+  color:#fff;
+  max-width:940px;
+  margin:0 auto 24px;
+}
+.h1 .accent{color:var(--cta);}
+.h1 .live{color:var(--live);}
+.h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg, var(--cta) 0%, #7BFFB8 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.sub{
+  font-family:var(--sora);
+  font-size:clamp(17px, 1.5vw, 20px);
+  font-weight:500;
+  line-height:1.5;
+  color:var(--silver);
+  max-width:720px;
+  margin:0 auto 16px;
+  letter-spacing:-0.005em;
+}
+.sub strong{color:#fff; font-weight:700;}
+.sub.sub-cta{margin-top:40px; margin-bottom:48px;}
+
+/* ===== VIDEO WRAP ===== */
+.video-wrap{
+  position:relative;
+  max-width:880px;
+  margin:0 auto 40px;
+  padding:12px;
+  background:linear-gradient(135deg, rgba(0,232,123,0.25), rgba(255,46,46,0.15));
+  border-radius:24px;
+  box-shadow:
+    0 0 60px rgba(0,232,123,0.18),
+    0 0 120px rgba(0,232,123,0.08);
+}
+.video-wrap::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  padding:1.5px;
+  background:linear-gradient(135deg, var(--cta) 0%, transparent 50%, var(--live) 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none;
+}
+
+.video-inner{
+  position:relative;
+  aspect-ratio:16/9;
+  border-radius:14px;
+  overflow:hidden;
+  background:#000;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* Placeholder visível até substituir pelo embed VTurb real */
+.vturb-placeholder{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  background:
+    radial-gradient(ellipse at center, rgba(0,232,123,0.15), transparent 65%),
+    #030712;
+  color:var(--silver);
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:24px;
+}
+.vturb-placeholder .play{
+  width:84px; height:84px;
+  border-radius:50%;
+  background:var(--cta);
+  display:grid; place-items:center;
+  margin:0 auto 18px;
+  box-shadow:0 0 40px var(--cta-glow);
+  animation:pulsePlay 2.4s ease-in-out infinite;
+}
+.vturb-placeholder .play svg{width:32px; height:32px; margin-left:6px;}
+@keyframes pulsePlay{
+  0%,100%{transform:scale(1); box-shadow:0 0 40px var(--cta-glow);}
+  50%{transform:scale(1.06); box-shadow:0 0 60px var(--cta-glow);}
+}
+.vturb-placeholder small{
+  display:block;
+  margin-top:10px;
+  color:var(--dim);
+  font-size:11px;
+  letter-spacing:0.18em;
+}
+
+/* ===== WARNING LINE ===== */
+.warning-line{
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:var(--mono);
+  font-size:14px; font-weight:600;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--live);
+  margin-top:12px;
+}
+.warning-line svg{width:16px; height:16px;}
+
+/* ===== CTA ===== */
+.cta-wrap{
+  margin-top:56px;
+  opacity:0;
+  transform:translateY(16px);
+  transition: opacity .8s ease, transform .8s ease;
+  pointer-events:none;
+}
+.cta-wrap.reveal{
+  opacity:1;
+  transform:none;
+  pointer-events:auto;
+}
+.cta-label{
+  font-family:var(--mono);
+  font-size:12px; font-weight:600;
+  letter-spacing:0.32em; text-transform:uppercase;
+  color:var(--cta);
+  margin-bottom:14px;
+}
+.btn-cta{
+  display:inline-flex; align-items:center; gap:12px;
+  padding:20px 44px;
+  background:var(--cta);
+  color:#030712;
+  font-family:var(--sora);
+  font-size:17px; font-weight:800;
+  letter-spacing:0.04em; text-transform:uppercase;
+  border-radius:8px;
+  text-decoration:none;
+  box-shadow:0 0 40px var(--cta-glow), 0 10px 40px rgba(0,232,123,0.25);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.btn-cta:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 60px var(--cta-glow), 0 14px 50px rgba(0,232,123,0.35);
+}
+.btn-cta .arrow{transition:transform .2s ease;}
+.btn-cta:hover .arrow{transform:translateX(4px);}
+.cta-foot{
+  margin-top:16px;
+  display:flex; justify-content:center; gap:22px; flex-wrap:wrap;
+  font-family:var(--mono);
+  font-size:11px; font-weight:500;
+  letter-spacing:0.22em; text-transform:uppercase;
+  color:var(--dim);
+}
+.cta-foot span{display:inline-flex; align-items:center; gap:6px;}
+.cta-foot svg{width:14px; height:14px;}
+
+/* ===== FOOTER ===== */
+.footer{
+  position:relative; z-index:2;
+  padding:40px 24px 32px;
+  border-top:1px solid var(--border);
+  text-align:center;
+  max-width:960px;
+  margin:40px auto 0;
+}
+.foot-legal{
+  font-family:var(--sora);
+  font-size:12px;
+  line-height:1.6;
+  color:rgba(210,214,225,0.4);
+  max-width:760px;
+  margin:0 auto 14px;
+}
+.foot-legal strong{color:rgba(255,255,255,0.6);}
+.foot-copy{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:rgba(210,214,225,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:640px){
+  .topbar-text{font-size:11px; letter-spacing:0.14em; gap:10px;}
+  .brand-sub{display:none;}
+  .main{padding:32px 16px 60px;}
+  .eyebrow{font-size:10px; padding:8px 16px; letter-spacing:0.22em;}
+  .h1{font-size:28px;}
+  .sub{font-size:16px;}
+  .video-wrap{padding:8px; border-radius:18px;}
+  .video-inner{border-radius:10px;}
+  .btn-cta{padding:18px 32px; font-size:15px;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR URGÊNCIA -->
+<div class="topbar">
+  <span class="topbar-text">
+    <span class="topbar-dot"></span>
+    Condição especial liberada somente pelas próximas horas
+  </span>
+</div>
+
+<!-- NAV / LOCKUP -->
+<nav class="nav">
+  <a href="#" class="lockup">
+    <span class="logo-dot"></span>
+    <span class="brand-name">Sala ao Vivo</span>
+    <span class="brand-sub">com Fabrício Gonçalvez</span>
+  </a>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <div class="eyebrow">
+    <span class="dot"></span>
+    Primeira e única vez
+  </div>
+
+  <h1 class="h1">
+    EU ACABEI DE FAZER <em>A OFERTA MAIS LOUCA</em> DA MINHA VIDA, E ELA VAI ENCERRAR <span class="live">ESSA SEMANA</span>!
+  </h1>
+
+  <p class="sub">
+    É a <strong>primeira e única vez</strong> que farei isso.
+  </p>
+  <p class="sub sub-cta">
+    Assista o vídeo abaixo antes que ele saia do ar:
+  </p>
+
+  <!-- VIDEO -->
+  <div class="video-wrap">
+    <div class="video-inner">
+
+      <!-- =================================================== -->
+      <!-- 🎬 COLE AQUI O EMBED DO VTURB (código completo do player) -->
+      <!-- =================================================== -->
+      <div class="vturb-placeholder" id="vturbPlaceholder">
+        <div>
+          <div class="play">
+            <svg viewBox="0 0 24 24" fill="#030712"><polygon points="6,4 20,12 6,20"/></svg>
+          </div>
+          <div>VSL · Fabrício Gonçalvez</div>
+          <small>Cole aqui o embed do VTurb</small>
+        </div>
+      </div>
+      <!-- =================================================== -->
+
+    </div>
+  </div>
+
+  <div class="warning-line">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    Sai do ar a qualquer momento
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap" id="ctaWrap">
+    <div class="cta-label">// Garanta sua vaga enquanto está no ar</div>
+    <a href="https://www.tradedaliberdade.com.br/pdv" class="btn-cta">
+      Quero garantir minha vaga
+      <span class="arrow">→</span>
+    </a>
+    <div class="cta-foot">
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Pagamento seguro
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Garantia de 15 dias
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Acesso imediato
+      </span>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="foot-legal">
+    <strong>Aviso legal.</strong> Esta página é informativa. Day trade envolve risco e pode gerar perdas superiores ao capital investido. Resultados passados não garantem resultados futuros. Nenhuma informação aqui constitui recomendação de investimento.
+  </p>
+  <p class="foot-legal">
+    <strong>Disclaimer Meta.</strong> Este site não faz parte do site do Facebook ou do Facebook Inc. Além disso, este site NÃO é endossado pelo Facebook de forma alguma.
+  </p>
+  <p class="foot-copy">Trade da Liberdade © 2026 · Fabrício Gonçalvez</p>
+</footer>
+
+<script>
+/* Revelação do CTA depois de X segundos (padrão VSL)
+   Ajustar via query string ?t=60 se quiser testar mais rápido */
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  const delay = parseInt(params.get('t'), 10);
+  const seconds = (!isNaN(delay) && delay >= 0) ? delay : 900; // 15 min default
+  const cta = document.getElementById('ctaWrap');
+  if (!cta) return;
+  setTimeout(() => cta.classList.add('reveal'), seconds * 1000);
+})();
+
+/* Pixel · InitiateCheckout no clique do CTA */
+document.querySelectorAll('.btn-cta').forEach(a => {
+  a.addEventListener('click', () => {
+    if (typeof fbq !== 'undefined') {
+      fbq('track','InitiateCheckout',{
+        content_name:'Sala ao Vivo · VSL',
+        content_category:'day-trade',
+        value:2497,
+        currency:'BRL'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
